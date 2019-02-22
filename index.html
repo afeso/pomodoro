@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
  <head>
     <title>Pomodoro Clock</title>
@@ -12,21 +13,21 @@
         <div class="sessionBreak">
           <div class="session">
             <h3>Session</h3>
-            <button id="decreaseTime">decrease</button>
+            <button id="decreaseTime" data-time-changer="true">decrease</button>
             <p class="sessionTime">25</p>
-            <button id="increaseTime">increase</button>
+            <button id="increaseTime" data-time-changer="true">increase</button>
           </div>
 
           <div class="break">
             <h3>Break</h3>
-            <button id="decreaseBreak">decrease</button>
-            <p class="breakTime">5</p>
-            <button id="increaseBreak">increase</button>
+            <button id="decreaseBreak" data-time-changer="true">decrease</button>
+            <p class="restTime">5</p>
+            <button id="increaseBreak" data-time-changer="true">increase</button>
           </div>
         </div>
 
         <div class="timerDisplay">
-          <button id="start">start</button>
+          <button id="start" data-time-changer="true">start</button>
           <button id="reset">reset</button>
           <p class="currentPhase">Session</p>
           <p class="timer">25:00</p>

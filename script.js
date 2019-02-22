@@ -8,13 +8,12 @@ let timer = initial.timer  // gets the ID to be used to terminate the timing int
 let timeDisplay = document.querySelector('.timer')
 let currentPhase = document.querySelector('.currentPhase')
 let sessionTime = document.querySelector('.sessionTime')
-let breakDisplay = document.querySelector('.breakTime')
+let restTime = document.querySelector('.restTime')
 
 function startWorking() {
   if (workTime >= 0) {
     console.log(`work: ${formatToTime(workTime)}`)
     timeDisplay.innerHTML = formatToTime(workTime)
-    // currentPhase.innerHtml = 'workTime'
     workTime--
     // check_counter('check')
   } else {
@@ -42,11 +41,6 @@ function startResting() {
 }
 
 function resetTimer(name) {
-  // if (name == 'workTime' && workTime <= 0) {
-  //   workTime = initial.workTime
-  // } else if (name = 'breakTime' && breakTime <= 0) {
-  //   breakTime = initial.breakTime
-  // }
   switch(name) {
     case 'workTime':
       if (workTime <= 0) {
@@ -56,12 +50,11 @@ function resetTimer(name) {
     
     case 'breakTime':
       if (breakTime <= 0) {
-        breakTime = parseInt(breakDisplay.innerHTML) * 60
+        breakTime = parseInt(restTime.innerHTML) * 60
       }
       break
   }
 }
-
 
 // function check_counter(action) {
 //   switch(action) {
@@ -91,51 +84,60 @@ function formatToTime(seconds) {
 }
 
 // timer = setInterval(startWorking, 1000) // starts the pomodoro loop
-// let start_breakTimer = setInterval(startResting, 1000)
 
 // Browser Events start Here.
 let buttons = Array.from(document.querySelectorAll('button'))
 
 buttons.forEach(function(button) {
-  // console.log(typeof(button.id))
   button.addEventListener('click', () => {
     // console.log(button.id)
     switch(button.id) {
       case 'start':
         timer = setInterval(startWorking, 1000)
+        timeChangerControls('disable')
         break
 
       case 'stop':
         reset('basic')
+        timeChangerControls('enable')
         break
 
       case 'pause':
         clearInterval(timer)
+        timeChangerControls('onlyStart')
         break
 
       case 'decreaseTime' :
-        // console.log(button)
-        workTime -= 60
-        sessionTime.innerHTML = workTime / 60
+        if (checkValueOfControlledElement(sessionTime)) {
+          workTime -= 60
+          sessionTime.innerHTML = workTime / 60
+          timeDisplay.innerHTML = formatToTime(workTime)
+        }
         break
 
       case 'increaseTime' :
         workTime += 60
         sessionTime.innerHTML = workTime / 60
+        timeDisplay.innerHTML = formatToTime(workTime)
         break
 
       case 'decreaseBreak':
-        breakTime -= 60
-        breakDisplay.innerHTML = breakTime /60
+        if (checkValueOfControlledElement(restTime)) {
+          breakTime -= 60
+          restTime.innerHTML = breakTime / 60
+        }
+        // breakTime -= 60
+        // restTime.innerHTML = breakTime /60
         break;
 
       case 'increaseBreak':
-        breakTime += 60
-        breakDisplay.innerHTML = breakTime /60
+        breakTime += 60 
+        restTime.innerHTML = breakTime / 60
         break
 
       default:
         reset('full')
+        timeChangerControls('enable')
         break
     }
 
@@ -143,21 +145,11 @@ buttons.forEach(function(button) {
 })
 
 function reset(type) {
-  // clearInterval(timer)
-  // workTime = initial.workTime
-  // breakTime = initial.breakTime
-  // timer = initial.timer
-  // counter = initial.counter
-  // timeDisplay.innerHTML = formatToTime(workTime)
-  // currentPhase.innerHTML = 'Session'
-  // breakDisplay.innerHTML = initial.breakTime / 60
-  // sessionTime.innerHTML = initial.workTime / 60
-
   switch (type) {
     case 'basic':
     clearInterval(timer)
     workTime = parseInt(sessionTime.innerHTML) * 60
-    breakTime = parseInt(breakDisplay.innerHTML) * 60
+    breakTime = parseInt(restTime.innerHTML) * 60
     timer = initial.timer
     // counter = initial.counter
     timeDisplay.innerHTML = formatToTime(workTime)
@@ -173,12 +165,32 @@ function reset(type) {
       // counter = initial.counter
       timeDisplay.innerHTML = formatToTime(workTime)
       currentPhase.innerHTML = 'Session'
-      breakDisplay.innerHTML = initial.breakTime / 60
+      restTime.innerHTML = initial.breakTime / 60
       sessionTime.innerHTML = initial.workTime / 60
       
       break
   }
 }
 
-// to do
-// fix the broken rest time counter and display
+function checkValueOfControlledElement(element) {
+  if (parseInt(element.innerHTML) >= 2) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function timeChangerControls(state) {
+  buttons.forEach(function(button) {
+    if (button.dataset.timeChanger == 'true') {
+      if (state == 'disable') {
+        button.disabled = true
+      } else if (state == 'enable') {
+        button.disabled = false
+      } else {
+        button = document.getElementById('start')
+        button.disabled = false
+      }
+    }
+  })
+}
