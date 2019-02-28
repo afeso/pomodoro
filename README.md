@@ -15,5 +15,9 @@ Creating a Pomodoro Timer Web Application
 - Time for work & rest no Longer goes below 1 Minute
 - all pomodoro Logic done
 
+# 28/feb/2019
+- Improved the CSS with FlexBox
+- Using font Awesome Icons
+
 
 
