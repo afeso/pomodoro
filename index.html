@@ -3,36 +3,52 @@
  <head>
     <title>Pomodoro Clock</title>
         <link href="style.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
     
   <body>
     <div class="container">
-      <div class="header">Pomodoro Clock</div>
+      <div class="header">
+        <h1>Pomodoro Clock</h1>
+      </div>
 
       <div class="clockBody">
         <div class="sessionBreak">
           <div class="session">
             <h3>Session</h3>
-            <button id="decreaseTime" data-time-changer="true">decrease</button>
-            <p class="sessionTime">25</p>
-            <button id="increaseTime" data-time-changer="true">increase</button>
+            <div class="timeControls">
+              <button id="decreaseTime" data-time-changer="true"><i class="fas fa-chevron-down"></i></button>
+              <p class="sessionTime">25</p>
+              <button id="increaseTime" data-time-changer="true"><i class="fas fa-chevron-up"></i></button>
+            </div>
           </div>
 
           <div class="break">
             <h3>Break</h3>
-            <button id="decreaseBreak" data-time-changer="true">decrease</button>
-            <p class="restTime">5</p>
-            <button id="increaseBreak" data-time-changer="true">increase</button>
+            <div class="timeControls">
+              <button id="decreaseBreak" data-time-changer="true"><i class="fas fa-chevron-down"></i></button>
+              <p class="restTime">5</p>
+              <button id="increaseBreak" data-time-changer="true"><i class="fas fa-chevron-up"></i></button>
+            </div>
+            
           </div>
         </div>
 
         <div class="timerDisplay">
-          <button id="start" data-time-changer="true">start</button>
-          <button id="reset">reset</button>
-          <p class="currentPhase">Session</p>
-          <p class="timer">25:00</p>
-          <button id="pause">pause</button>
-          <button id="stop">stop</button>
+          <div class="sessionControls">
+            <button id="start" data-time-changer="true">start</button>
+            <button id="reset">reset</button>
+          </div>
+
+          <div>
+            <p class="currentPhase">Session</p>
+            <p class="timer">25:00</p>
+          </div>
+          
+          <div class="sessionControls">
+            <button id="pause">pause</button>
+            <button id="stop">stop</button>
+          </div>
         </div>
 
       </div>

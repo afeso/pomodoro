@@ -3,7 +3,6 @@ let initial = {workTime: 1500, breakTime: 300, timer: -1, counter: 0} //Default 
 let workTime = initial.workTime
 let breakTime = initial.breakTime
 let timer = initial.timer  // gets the ID to be used to terminate the timing interval
-// let counter = initial.counter
 
 let timeDisplay = document.querySelector('.timer')
 let currentPhase = document.querySelector('.currentPhase')
@@ -56,25 +55,6 @@ function resetTimer(name) {
   }
 }
 
-// function check_counter(action) {
-//   switch(action) {
-//     case 'check' :
-//       if (counter >= 3) {
-//         clearInterval(timer)
-//       }
-//       break;
-    
-//     case 'reset':
-//       if (counter >= 3) {
-//         counter = initial.counter
-//       }
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
 function formatToTime(seconds) {
   let measuredTime = new Date(null)
   measuredTime.setSeconds(seconds)
@@ -83,7 +63,7 @@ function formatToTime(seconds) {
   return hourSeconds
 }
 
-// timer = setInterval(startWorking, 1000) // starts the pomodoro loop
+// timer = setInterval(startWorking, 1000) // starts the pomodoro loop in the console
 
 // Browser Events start Here.
 let buttons = Array.from(document.querySelectorAll('button'))
@@ -98,13 +78,13 @@ buttons.forEach(function(button) {
         break
 
       case 'stop':
-        reset('basic')
+        renewPomodoro('basic')
         timeChangerControls('enable')
         break
 
       case 'pause':
         clearInterval(timer)
-        timeChangerControls('onlyStart')
+        timeChangerControls('enableOnlyStart') // this gets called by default when none of the conditions evalustes to true
         break
 
       case 'decreaseTime' :
@@ -126,8 +106,7 @@ buttons.forEach(function(button) {
           breakTime -= 60
           restTime.innerHTML = breakTime / 60
         }
-        // breakTime -= 60
-        // restTime.innerHTML = breakTime /60
+
         break;
 
       case 'increaseBreak':
@@ -136,7 +115,7 @@ buttons.forEach(function(button) {
         break
 
       default:
-        reset('full')
+        renewPomodoro('full')
         timeChangerControls('enable')
         break
     }
@@ -144,7 +123,7 @@ buttons.forEach(function(button) {
   })
 })
 
-function reset(type) {
+function renewPomodoro(type) {
   switch (type) {
     case 'basic':
     clearInterval(timer)
