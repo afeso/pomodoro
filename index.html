@@ -4,6 +4,8 @@
     <title>Pomodoro Clock</title>
         <link href="style.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
   </head>
     
   <body>
@@ -15,7 +17,7 @@
       <div class="clockBody">
         <div class="sessionBreak">
           <div class="session">
-            <h3>Session</h3>
+            <h5 class="headings">Session</h5>
             <div class="timeControls">
               <button id="decreaseTime" data-time-changer="true"><i class="fas fa-chevron-down"></i></button>
               <p class="sessionTime">25</p>
@@ -24,7 +26,7 @@
           </div>
 
           <div class="break">
-            <h3>Break</h3>
+            <h5 class="headings">Break</h5>
             <div class="timeControls">
               <button id="decreaseBreak" data-time-changer="true"><i class="fas fa-chevron-down"></i></button>
               <p class="restTime">5</p>
@@ -36,18 +38,18 @@
 
         <div class="timerDisplay">
           <div class="sessionControls">
-            <button id="start" data-time-changer="true">start</button>
-            <button id="reset">reset</button>
+            <button id="start" data-time-changer="true"><i class="fas fa-play"></i></button>
+            <button id="reset"><i class="fas fa-sync-alt"></i></button>
           </div>
 
-          <div>
-            <p class="currentPhase">Session</p>
+          <!-- <div class="test"> -->
+            <h5 class="currentPhase">Session</h5>
             <p class="timer">25:00</p>
-          </div>
+          <!-- </div> -->
           
           <div class="sessionControls">
-            <button id="pause">pause</button>
-            <button id="stop">stop</button>
+            <button id="pause"><i class="fas fa-pause"></i></button>
+            <button id="stop"><i class="fas fa-stop"></i></button>
           </div>
         </div>
 

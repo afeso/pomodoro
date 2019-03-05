@@ -9,6 +9,8 @@ let currentPhase = document.querySelector('.currentPhase')
 let sessionTime = document.querySelector('.sessionTime')
 let restTime = document.querySelector('.restTime')
 
+let alarm = new Audio('alarm-sound.wav')
+
 function startWorking() {
   if (workTime >= 0) {
     console.log(`work: ${formatToTime(workTime)}`)
@@ -19,6 +21,7 @@ function startWorking() {
     clearInterval(timer)
     resetTimer('breakTime')
     // counter++
+    alarm.play()
     timer = setInterval(startResting, 1000)
     currentPhase.innerHTML = 'Break'
   }
@@ -35,6 +38,7 @@ function startResting() {
     resetTimer('workTime')
     timer = setInterval(startWorking, 1000)
     currentPhase.innerHTML = 'Session'
+    alarm.play()
   }
   
 }
