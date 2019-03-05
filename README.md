@@ -1,5 +1,5 @@
 # pomodoro
-Creating a Pomodoro Timer Web Application
+Creating a Pomodoro Timer Web Application | [View in Browser](https://afeso.github.io/pomodoro)
 
 # 13/02/2019
 - Logic for the timer works fine in the console / terminal
@@ -22,7 +22,10 @@ Creating a Pomodoro Timer Web Application
 # 5/mar/2019
 - completed the CSS styling
 - Added a sound to alert when session and rest runs out
-- Added Google Fonts.
+- Added Google Fonts
+
+- Added a footer pointing to gitHub
+- Cleaned up unused css rules and javascript codes
 
 
 

@@ -1,4 +1,4 @@
-let initial = {workTime: 1500, breakTime: 300, timer: -1, counter: 0} //Default Values
+let initial = {workTime: 1500, breakTime: 300, timer: -1} //Default Values
 
 let workTime = initial.workTime
 let breakTime = initial.breakTime
@@ -16,11 +16,9 @@ function startWorking() {
     console.log(`work: ${formatToTime(workTime)}`)
     timeDisplay.innerHTML = formatToTime(workTime)
     workTime--
-    // check_counter('check')
   } else {
     clearInterval(timer)
     resetTimer('breakTime')
-    // counter++
     alarm.play()
     timer = setInterval(startResting, 1000)
     currentPhase.innerHTML = 'Break'
@@ -40,7 +38,6 @@ function startResting() {
     currentPhase.innerHTML = 'Session'
     alarm.play()
   }
-  
 }
 
 function resetTimer(name) {
@@ -134,7 +131,6 @@ function renewPomodoro(type) {
     workTime = parseInt(sessionTime.innerHTML) * 60
     breakTime = parseInt(restTime.innerHTML) * 60
     timer = initial.timer
-    // counter = initial.counter
     timeDisplay.innerHTML = formatToTime(workTime)
     currentPhase.innerHTML = 'Session'
 
