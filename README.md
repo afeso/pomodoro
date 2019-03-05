@@ -19,5 +19,10 @@ Creating a Pomodoro Timer Web Application
 - Improved the CSS with FlexBox
 - Using font Awesome Icons
 
+# 5/mar/2019
+- completed the CSS styling
+- Added a sound to alert when session and rest runs out
+- Added Google Fonts.
+
 
 
