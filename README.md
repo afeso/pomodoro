@@ -27,5 +27,9 @@ Creating a Pomodoro Timer Web Application | [View in Browser](https://afeso.gith
 - Added a footer pointing to gitHub
 - Cleaned up unused css rules and javascript codes
 
+# 5/mar/2019
+- Added favicon
+- Removed console loggin of running timer
+
 
 

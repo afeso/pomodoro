@@ -11,9 +11,14 @@ let restTime = document.querySelector('.restTime')
 
 let alarm = new Audio('alarm-sound.wav')
 
+// let browserElement = {
+//   timeDisplay: document.querySelector('.timer'),
+//   currentPhase: document.querySelector('.currentPhase')
+// }
+
 function startWorking() {
   if (workTime >= 0) {
-    console.log(`work: ${formatToTime(workTime)}`)
+    // console.log(`work: ${formatToTime(workTime)}`)
     timeDisplay.innerHTML = formatToTime(workTime)
     workTime--
   } else {
@@ -28,7 +33,7 @@ function startWorking() {
 
 function startResting() {
   if (breakTime >= 0) {
-    console.log(`rest: ${formatToTime(breakTime)}`)
+    // console.log(`rest: ${formatToTime(breakTime)}`)
     timeDisplay.innerHTML = formatToTime(breakTime)
     breakTime--
   } else {
@@ -118,9 +123,7 @@ buttons.forEach(function(button) {
       default:
         renewPomodoro('full')
         timeChangerControls('enable')
-        break
     }
-
   })
 })
 
